@@ -1,0 +1,58 @@
+
+<div class="toolbar" role="banner" style="background-color: burlywood;">
+    <img
+      width="40"
+      alt="Angular Logo"
+      src="./assets/images.png" />
+    <span>Admin - Find Book</span>
+    
+     
+</div>
+
+<h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;text-align: center;"> BOOK DETAILS</h1>
+<button (click)="back()"  class="btn btn-secondary" style="margin-left: 10px"><<Back</button>
+
+
+<table class="table table-striped table table-hover" id="myTable">
+  <thead class="thead-light">
+  <tr>
+      <th>Book Id</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Description</th>
+      <th>ISBN</th>
+      <th>Price</th>
+      <th>Publishdate</th>
+      <th>Category</th>
+      <th>Image</th>
+      <th><div class="md-form">
+        <input type="search" [(ngModel)]="searchText" placeholder="Search ">
+      </div></th>
+    
+  </tr>
+</thead>
+  <tr *ngFor="let b of booklist | filter: searchText">
+      <td>{{b.bookID}}</td>
+      <td>{{b.title}}</td>
+      <td>{{b.author}}</td>
+      <td>{{b.description}}</td>
+      <td>{{b.price}}</td>
+      <td>{{b.isbn}}</td>
+      <td>{{b.publishdate}}</td>
+      <td>{{b.category}}</td>
+      <td><img [src] = "b.imageUrl" height="300px" width=300px></td>
+      <td><button (click)="deleteBook(b.bookID)"  class="btn btn-danger">Delete</button>
+          <button  class="btn btn-info" (click)="updateBook(b)" style="margin-left: 10px">Update</button>
+     
+
+
+  </tr>
+
+</table>
+
+<!-- <div><h2> Enter ID to find book :</h2>
+  <form #findform="ngForm" (ngSubmit)="find()">
+    <input type="number" id="bookid" name="bookid"  [(ngModel)]="bookid" />
+    <input type="submit" value="Find" class="btn btn-info"/>
+  </form>
+</div> -->
